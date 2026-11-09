@@ -23,7 +23,7 @@ Navigation lives on a **2D floor grid** (\(SE(2)\)). Manipulation lives on a **7
 | Arm | Chart `cell_q[T,W,7]` | Anchor at slit, color with PyBullet, decode with temporal Poisson |
 | Coupled | Time index `t = 1…T_nav+T_arm` | Base reaches standoff → morph chart takes over |
 
-![Three-layer pipeline](assets/figures/fig1_method_pipeline_v4_example.png)
+![Three-layer pipeline](assets/figures/fig1-1.png)
 
 Deep dives: [docs/safetopo.md](docs/safetopo.md) · [docs/morph.md](docs/morph.md) · [docs/coupled.md](docs/coupled.md)
 
@@ -44,7 +44,7 @@ loss = F.binary_cross_entropy(torch.sigmoid(pass_logits), gt_passable)
 
 **Planning:** Threshold the map → **8-neighbor Dijkstra** → smooth SE(2) waypoints. Eval collisions use an RGB-D **judge** that recovers thin obstacles (see `nav_floor_oracle.py`).
 
-![SafeTopo eval](assets/figures/fig2_safetopo_evidence_v4.png)
+![SafeTopo eval](assets/figures/fig2_nav_clean_hug.png)
 
 **Quick smoke test (no GPU weights):**
 
@@ -71,7 +71,7 @@ python examples/safetopo_token_smoke.py
 cell_q.shape == (40, 11, 7)   # 440 joint candidates, not 440×7×6 stored tables
 ```
 
-![Arm qualitative grid](assets/figures/fig6_six_families_joint_qualitative.png)
+![Six sealed families](assets/figures/fig_six_families_geom_sg_topdown_morph.png)
 
 Morph files in `models/joint_morph_correspondence.py` and `models/joint_safetopo_decode.py` require **PyBullet scene code** from the full research tree—see [docs/MODULES.md](docs/MODULES.md).
 
@@ -81,31 +81,9 @@ Morph files in `models/joint_morph_correspondence.py` and `models/joint_safetopo
 
 The base follows the SafeTopo floor path to a **fixture standoff** facing the aperture. The arm chart is built in the **same world frame** as the parked base. Execution concatenates base and arm phases on one schedule.
 
-![Kitchen coupled showcase](assets/figures/fig_showcase_coupled_morph_00090_kitchen_v7.png)  
-![Family-level coupled summary](assets/figures/fig5_coupled_matrix_family.png)
+![Kitchen coupled showcase](assets/figures/fig_showcase_coupled_morph_00090_kitchen_v7.png)
 
 Orchestration (`coupled_planner.py`, ViT-bridged runners) is documented in [docs/coupled.md](docs/coupled.md) and implemented in the research monorepo to avoid duplicating ViT+PyBullet load hygiene.
-
----
-
-## Demo videos
-
-Videos are **not committed** to git (size). Recommended workflow:
-
-1. Upload clips to YouTube or Bilibili.  
-2. Replace the placeholder links below in this README.
-
-| Clip | Suggested content | Local render path (research repo) |
-|------|-------------------|-----------------------------------|
-| **SafeTopo nav** | 28-scene floor path vs baseline | `results/paper_figures/` qualitative panels |
-| **Morph five families** | Sealed slits, whole-arm through gap | `videos/morph_five_families_linked.mp4` |
-| **Coupled kitchen** | Frame 00090: drive → park → arm | `results/demo_video/cv_review/coupled_planning_review.mp4` |
-
-**Placeholder embeds (replace `VIDEO_ID`):**
-
-```markdown
-[![Morph demo](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
-```
 
 ---
 

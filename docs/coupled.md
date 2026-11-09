@@ -8,7 +8,7 @@ Coupled planning chains **2D floor navigation** and **7-DoF morph** on a **singl
 2. **Discrete planning** — Dijkstra on the floor grid; build and decode the \(T\times W\) morph chart.  
 3. **Execution** — SE(2) base waypoints + joint trajectory under one schedule.
 
-![Pipeline overview](../assets/figures/fig1_method_pipeline_v4_example.png)
+![Pipeline overview](../assets/figures/fig1-1.png)
 
 ## Spatial handoff
 
@@ -29,6 +29,6 @@ Coupled scripts in the research repo (`coupled_planner.py`, `coupled_vit_pipelin
 | Asset | Description |
 |-------|-------------|
 | `assets/figures/fig_showcase_coupled_morph_00090_kitchen_v7.png` | NYU kitchen frame: floor path + through-opening arm |
-| `assets/figures/fig5_coupled_matrix_family.png` | Five sealed families after base handoff |
+| `assets/figures/fig_six_families_geom_sg_topdown_morph.png` | Six sealed families: obstacle layout and morph trajectory |
 
 Record-based Table-style audits (`context-audit` skill in research repo) replay stored JSON without reloading ViT.

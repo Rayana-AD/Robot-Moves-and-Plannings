@@ -37,5 +37,5 @@ When the paper is public, we may tag matching releases (`v1.0-paper`) between th
 
 1. Copy changed files from research `models/` into this repo.  
 2. Run import smoke test: `python -c "from models.safe_topo_qkv import build_patch_topology_tokens"`.  
-3. Refresh figures under `assets/figures/` only when paper visuals change (PNG only, no PDF).  
+3. Refresh figures under `assets/figures/` to match `main.tex` `\includegraphics` names (PNG only, no PDF). Current body figures: `fig1-1`, `fig2_nav_clean_hug`, `fig_six_families_geom_sg_topdown_morph`, `fig_showcase_coupled_morph_00090_kitchen_v7`. Do not reuse older `fig6_six_families_joint_qualitative` / ViT Tier-5 sheets.  
 4. Update `DATA_SOURCES.md` if splits or oracle flags change.

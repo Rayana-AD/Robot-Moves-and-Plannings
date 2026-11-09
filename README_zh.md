@@ -12,7 +12,7 @@
 | Morph | `cell_q[40,11,7]` 候选表 | 以缝为中心建表，PyBullet 涂格，泊松时序平滑 |
 | Coupled | 统一时间轴 | 底盘停稳对接开口 → 手臂解码图表 |
 
-![三层流程](assets/figures/fig1_method_pipeline_v4_example.png)
+![三层流程](assets/figures/fig1-1.png)
 
 详细说明：[docs/safetopo.md](docs/safetopo.md) · [docs/morph.md](docs/morph.md) · [docs/coupled.md](docs/coupled.md)
 
@@ -30,7 +30,7 @@ loss = F.binary_cross_entropy(torch.sigmoid(pass_logits), gt_passable)
 
 规划：可走图二值化 → **8 邻域 Dijkstra** → SE(2) 航向平滑。评测用 RGB-D **Oracle** 补细腿后逐点统计硬碰撞。
 
-![导航评测](assets/figures/fig2_safetopo_evidence_v4.png)
+![导航评测](assets/figures/fig2_nav_clean_hug.png)
 
 ---
 
@@ -48,7 +48,7 @@ loss = F.binary_cross_entropy(torch.sigmoid(pass_logits), gt_passable)
 
 说明：表内存 **440 个 7 维关节向量**；「每关节 6 轮转」是填表时 IK 内部循环，不是表的额外维度。
 
-![六类密封场景](assets/figures/fig6_six_families_joint_qualitative.png)
+![六类密封场景](assets/figures/fig_six_families_geom_sg_topdown_morph.png)
 
 完整 PyBullet 场景与 `joint_visible_passage` 仍在私人研究仓库，见 [docs/MODULES.md](docs/MODULES.md)。
 
@@ -59,17 +59,6 @@ loss = F.binary_cross_entropy(torch.sigmoid(pass_logits), gt_passable)
 底盘沿 SafeTopo 路径停靠开口正前方，与世界系中的障碍、缝几何对齐后，再构建 Morph 表并执行。论文 Fig. 1 第三层为统一时间轴上的 SE(2) 与关节轨迹拼接。
 
 ![厨房耦合展示](assets/figures/fig_showcase_coupled_morph_00090_kitchen_v7.png)
-
----
-
-## 演示视频
-
-仓库内**不提交**大体积 mp4。请将成片上传至视频平台后，在 [README.md](README.md) 中替换 YouTube 占位链接。
-
-| 内容 | 研究仓库内本地路径（供剪辑上传） |
-|------|----------------------------------|
-| 五类密封缝 Morph | `videos/morph_five_families_linked.mp4` |
-| 耦合厨房审片 | `results/demo_video/cv_review/coupled_planning_review.mp4` |
 
 ---
 

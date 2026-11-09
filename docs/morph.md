@@ -60,4 +60,4 @@ PyBullet answers **one** configuration at a time. The chart supplies **time stru
 
 ## Representative result
 
-![Six sealed families qualitative](../assets/figures/fig6_six_families_joint_qualitative.png)
+![Six sealed families](../assets/figures/fig_six_families_geom_sg_topdown_morph.png)

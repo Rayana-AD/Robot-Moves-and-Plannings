@@ -50,6 +50,6 @@ Full training and 28-scene eval scripts live in the private research repository 
 
 ## Representative result
 
-![SafeTopo navigation evidence](../assets/figures/fig2_safetopo_evidence_v4.png)
+![SafeTopo navigation evidence](../assets/figures/fig2_nav_clean_hug.png)
 
-*Traversable IoU and hard-collision means on 28 NYU eval scenes (paper Fig. 2 style).*
+*28 NYU scenes: training loss, hard collisions, and floor-path overlays (current paper figure).*
