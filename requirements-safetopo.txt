@@ -1,0 +1,6 @@
+# Minimal stack for SafeTopo modules in models/
+torch>=2.0
+torchvision
+transformers>=4.40,<5.0
+numpy
+Pillow

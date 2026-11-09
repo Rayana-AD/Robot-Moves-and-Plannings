@@ -1,0 +1,4 @@
+# Morph modules + PyBullet collision checks (full scene code in research repo)
+-r requirements-safetopo.txt
+pybullet
+scipy
